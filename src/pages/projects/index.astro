@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects } from "../../data/projects";
+---
+
+<BaseLayout title="Projects" description="Selected applied AI products, agent systems, evaluation work, and practical automation by Emiliano Ruiz Gomez.">
+  <section class="section project-intro">
+    <p class="eyebrow">Technical dossier / Selected work</p>
+    <h1 class="title">Four systems. One standard: show the evidence.</h1>
+    <p class="lede">Case studies explain the problem, my role, the architecture, proof points, and what the current evidence does not establish.</p>
+  </section>
+  {projects.map((project) => <ProjectCard project={project} />)}
+</BaseLayout>
+
+<style>.project-intro { min-height: 60vh; } .project-intro .lede { margin-top: 3rem; }</style>

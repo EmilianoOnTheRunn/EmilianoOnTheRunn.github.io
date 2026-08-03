@@ -1,0 +1,1 @@
+{"name":"emiliano-ruiz-portfolio","version":"1.0.0","private":true,"type":"module","engines":{"node":">=22.12.0"},"scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview","check":"astro check"},"dependencies":{"@astrojs/sitemap":"^3.4.2","astro":"^7.1.6"},"devDependencies":{"@astrojs/check":"^0.9.4","typescript":"^5.9.2"}}
