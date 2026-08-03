@@ -1,0 +1,52 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+type Props = { title: string; description: string; image?: string };
+const { title, description, image = "/og.svg" } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+const fullTitle = title === "Emiliano Ruiz Gomez" ? title : `${title} — Emiliano Ruiz Gomez`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Emiliano Ruiz Gomez",
+  url: Astro.site,
+  homeLocation: { "@type": "City", name: "Montréal" },
+  sameAs: [
+    "https://github.com/EmilianoOnTheRunn",
+    "https://www.linkedin.com/in/emiliano-ruiz-gomez-530465254/",
+  ],
+  knowsAbout: ["Applied artificial intelligence", "Local AI", "Agent systems", "Evaluation", "Automation"],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#002fa7" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{fullTitle}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="shell">
+      <Header />
+      <main id="content"><slot /></main>
+      <Footer />
+    </div>
+  </body>
+</html>
