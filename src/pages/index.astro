@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { featuredProjects } from "../data/projects";
+---
+
+<BaseLayout title="Emiliano Ruiz Gomez" description="Applied AI product engineer building local-first software, agent systems, evaluation harnesses, and practical automation in Montréal.">
+  <section class="hero">
+    <div class="hero-main">
+      <p class="eyebrow">Applied AI product engineer · Montréal</p>
+      <h1 class="display">Software that earns trust.</h1>
+    </div>
+    <div class="hero-side">
+      <p class="lede">I build local-first products, governed agent systems, and practical automation—then test the claims they make.</p>
+      <div class="actions">
+        <a class="button primary" href="/projects">Explore the work</a>
+        <a class="button" href="/about">My background</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="positioning" aria-labelledby="positioning-title">
+    <p class="eyebrow">Position / 01</p>
+    <div>
+      <h2 id="positioning-title">Business context in. Reliable systems out.</h2>
+      <p>I came to software through operations, marketing, and direct client problems. That route taught me to translate ambiguous human needs into bounded workflows, useful interfaces, and evidence that a system actually works.</p>
+    </div>
+  </section>
+
+  <div aria-label="Featured projects">
+    {featuredProjects.map((project) => <ProjectCard project={project} />)}
+  </div>
+
+  <section class="capabilities">
+    <div>
+      <p class="eyebrow">Practice / 02</p>
+      <h2>What I build</h2>
+    </div>
+    <ol>
+      <li><span>01</span><strong>Local AI products</strong><small>Speech, intelligence, privacy, native delivery</small></li>
+      <li><span>02</span><strong>Agent systems</strong><small>Contracts, permissions, artifacts, audit trails</small></li>
+      <li><span>03</span><strong>Evaluation</strong><small>Fixtures, benchmarks, promotion gates, limitations</small></li>
+      <li><span>04</span><strong>Automation</strong><small>Marketing and operations turned into software</small></li>
+    </ol>
+  </section>
+
+  <section class="language">
+    <p class="eyebrow">Communication / 03</p>
+    <p class="title">English. Français. Español.</p>
+    <p class="lede">Technical work is clearer when the people around it feel understood.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { display: grid; grid-template-columns: 1.45fr .75fr; min-height: min(78vh, 820px); }
+  .hero-main, .hero-side { padding: clamp(3rem, 8vw, 8rem) var(--pad); }
+  .hero-main { display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-side { display: flex; flex-direction: column; justify-content: flex-end; border-left: 1px solid var(--line); }
+  .positioning { display: grid; grid-template-columns: 1fr 2fr; gap: var(--pad); padding: clamp(4rem, 9vw, 9rem) var(--pad); border-top: 1px solid var(--line); }
+  .positioning h2, .capabilities h2 { max-width: 12ch; margin: 0; font-size: clamp(2.4rem, 6vw, 6rem); line-height: .92; letter-spacing: -.06em; }
+  .positioning p:last-child { max-width: 42rem; font-size: 1.2rem; }
+  .capabilities { display: grid; grid-template-columns: 1fr 1.4fr; border-top: 1px solid var(--line); }
+  .capabilities > div { padding: var(--pad); }
+  .capabilities ol { margin: 0; padding: 0; border-left: 1px solid var(--line); list-style: none; }
+  .capabilities li { display: grid; grid-template-columns: 3rem 1fr; gap: .4rem 1rem; padding: 1.4rem var(--pad); border-bottom: 1px solid var(--line); }
+  .capabilities li:last-child { border-bottom: 0; }
+  .capabilities span { grid-row: span 2; color: var(--accent); font-size: .75rem; font-weight: 700; }
+  .capabilities strong { font-size: 1.25rem; }
+  .capabilities small { color: var(--muted); }
+  .language { min-height: 32rem; padding: clamp(4rem, 9vw, 9rem) var(--pad); border-top: 1px solid var(--line); }
+  .language .lede { margin-top: 3rem; }
+  @media (max-width: 760px) { .hero, .positioning, .capabilities { grid-template-columns: 1fr; } .hero-side, .capabilities ol { border-left: 0; border-top: 1px solid var(--line); } }
+</style>

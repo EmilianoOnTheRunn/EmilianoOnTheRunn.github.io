@@ -1,0 +1,114 @@
+:root {
+  color-scheme: light;
+  --ink: #0b0b0c;
+  --paper: #f7f7f4;
+  --muted: #5a5a58;
+  --line: #b9b9b3;
+  --accent: #002fa7;
+  --accent-ink: #ffffff;
+  --max: 1440px;
+  --pad: clamp(1rem, 3vw, 3.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #f2f2ed;
+    --paper: #101011;
+    --muted: #aaa9a3;
+    --line: #454545;
+    --accent: #5f86ff;
+    --accent-ink: #080808;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.48;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+a:hover { color: var(--accent); }
+img, video { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+.shell { width: min(100%, var(--max)); margin: 0 auto; border-inline: 1px solid var(--line); }
+.rule { border-top: 1px solid var(--line); }
+.section { padding: clamp(4rem, 9vw, 8rem) var(--pad); border-top: 1px solid var(--line); }
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.display {
+  max-width: 15ch;
+  margin: 0;
+  font-size: clamp(3.2rem, 10vw, 9.6rem);
+  font-weight: 700;
+  letter-spacing: -.075em;
+  line-height: .88;
+}
+.title {
+  max-width: 18ch;
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 6.8rem);
+  font-weight: 700;
+  letter-spacing: -.065em;
+  line-height: .92;
+}
+.lede { max-width: 42rem; margin: 0; font-size: clamp(1.2rem, 2.4vw, 2rem); line-height: 1.25; }
+.measure { max-width: 44rem; }
+.muted { color: var(--muted); }
+.meta { font-size: .82rem; letter-spacing: .02em; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: .7rem 1rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.button:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.button.primary { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem; }
+.grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.grid-2 > * { padding: var(--pad); }
+.grid-2 > * + * { border-left: 1px solid var(--line); }
+.number { color: var(--accent); font-size: clamp(5rem, 14vw, 13rem); font-weight: 700; letter-spacing: -.09em; line-height: .75; }
+.tag-list { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.tag-list li { padding: .35rem .55rem; border: 1px solid var(--line); font-size: .72rem; text-transform: uppercase; }
+.prose h2 { margin: 0 0 1.2rem; font-size: clamp(1.8rem, 4vw, 3.8rem); letter-spacing: -.045em; line-height: 1; }
+.prose h3 { margin: 2.5rem 0 .7rem; font-size: 1rem; text-transform: uppercase; }
+.prose p { max-width: 44rem; }
+.prose ul { max-width: 46rem; padding-left: 1.2rem; }
+.prose li + li { margin-top: .6rem; }
+.proof { margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--line); color: var(--accent); font-size: 1.12rem; font-weight: 600; }
+.skip { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .7rem 1rem; background: var(--accent); color: white; }
+.skip:focus { top: 1rem; }
+
+@media (max-width: 760px) {
+  .shell { border-inline: 0; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-2 > * + * { border-left: 0; border-top: 1px solid var(--line); }
+  .display { font-size: clamp(3rem, 17vw, 5.2rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

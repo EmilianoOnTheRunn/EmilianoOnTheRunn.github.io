@@ -1,0 +1,8 @@
+---
+import type { Project } from "../data/projects";
+const { project } = Astro.props as { project: Project };
+---
+<article class="project-card"><div class="project-index" aria-hidden="true">{project.index}</div><div class="project-copy"><p class="eyebrow">{project.status}</p><h2><a href={`/projects/${project.slug}`}>{project.title}</a></h2><p class="summary">{project.summary}</p><p class="proof">{project.proof}</p><ul class="tag-list" aria-label="Technologies">{project.technologies.slice(0,5).map(t=><li>{t}</li>)}</ul><div class="actions"><a class="button" href={`/projects/${project.slug}`}>Read case study →</a></div></div></article>
+<style>
+.project-card{display:grid;grid-template-columns:minmax(9rem,.75fr) 2fr;min-height:34rem;border-top:1px solid var(--line)}.project-index{overflow:hidden;padding:var(--pad);border-right:1px solid var(--line);color:var(--accent);font-size:clamp(5rem,13vw,12rem);font-weight:700;letter-spacing:-.1em;line-height:.72}.project-copy{display:flex;flex-direction:column;align-items:flex-start;padding:clamp(2rem,6vw,6rem) var(--pad)}h2{margin:0;font-size:clamp(2.5rem,6vw,6rem);letter-spacing:-.065em;line-height:.9}h2 a{text-decoration:none}.summary{max-width:36rem;font-size:clamp(1.15rem,2vw,1.6rem)}.proof{max-width:40rem}.actions{margin-top:auto;padding-top:2rem}@media(max-width:700px){.project-card{grid-template-columns:1fr}.project-index{min-height:7.5rem;border-right:0;border-bottom:1px solid var(--line)}}
+</style>
